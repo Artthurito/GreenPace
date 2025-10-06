@@ -2,7 +2,6 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="GreenPace" content="Corridas mais frescas e inteligentes em meio à selva de concreto.">
     <meta name="description" content="Descubra rotas que evitam as ilhas de calor da sua cidade. Treine com mais conforto, performance e bem-estar com o Green Pace.">
@@ -10,57 +9,119 @@
     <style>
         body { 
             font-family: sans-serif; 
-            margin: 0; 
+            margin: 0;
         }
-        .header { 
-            background-color: #f8f8f8; 
+        .header {
+            background-color: #f8f8f8;
             padding: 20px; 
             text-align: center; 
-            display: flex;
-            gap: 20px;
+            display: flex; 
+            align-items: center; 
+            gap: 20px; 
         }
-        #logo{
-            text-align: left;
-            position: relative;
+        #logo{ 
+            text-align: left; 
+            position: relative; 
         }
-        .nav a { 
-            margin: 0 15px; 
-            text-decoration: none; 
-            color: #333; 
-        }
+        .nav a { margin: 0 15px; text-decoration: none; color: #333; }
+        
         .banner { 
             padding: 100px 20px; 
             text-align: center; 
-            background-color: #eee; 
+            background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('');
+            background-size: cover;
+            background-position: center;
+            color: white;
         }
-        .banner h1 { 
-            font-size: 3em; 
-        }
+        .banner h1 { font-size: 3em; }
+
+        .banner a { color: white; font-weight: bold; }
+
         .content { 
-            padding: 40px 20px; 
+            padding: 60px 20px;
+            text-align: center; 
+            background-color: #ffffff;
         }
-        .content1 {
-            padding: 40px 20px; 
-            text-align: left;
-            margin-left: 300px;
-            margin-right: 100px;
-        }
+        
         .banner2 { 
-            padding: 40px; 
-            background-color: #e9e8e8;
-            display: flex;
+            padding: 60px 40px;
+            display: flex; 
             align-items: center; 
             justify-content: space-between; 
-            gap: 40px;
+            gap: 40px; 
+            background-color: #e9e8e8;
         }
-        .banner-text {
-            flex: 1; 
+        .banner-text { flex: 1; }
+
+        #img_banner1{ 
+            width: 450px; 
+            height: auto; 
+            border-radius: 8px; 
         }
-        #img_banner1{
-            width: 450px;
-            height: auto;
-            border-radius: 8px;
+        .footer { 
+            background-color: #282828; 
+            color: #fff; 
+            padding: 60px 40px; 
+            display: flex; 
+            justify-content: space-around; 
+            flex-wrap: wrap; 
+            gap: 30px; 
+            text-align: left; 
         }
+        .footer-column { min-width: 200px; }
+
+        .footer-column h3 { 
+            font-size: 1.5em; 
+            margin-bottom: 20px; 
+        }
+        .footer-column h4 { 
+            font-size: 0.9em; 
+            color: #a0a0a0; 
+            margin-bottom: 15px; 
+            text-transform: uppercase; 
+        }
+        .footer-column p, .footer-column a { 
+            font-size: 0.9em; 
+            color: #dcdcdc; 
+            text-decoration: none; 
+        }
+        .footer-column a:hover { 
+            text-decoration: underline; 
+            color: #fff; 
+        }
+        .footer-column ul { 
+            list-style: none; 
+            padding: 0; 
+            margin: 0; 
+        }
+        .footer-column ul li { margin-bottom: 12px; }
+        .social-link { 
+            display: flex; 
+            align-items: center; 
+            gap: 10px; 
+        }
+        .social-link img { 
+            width: 16px; 
+            height: 16px; 
+        }
+        .app-store-btn img { 
+            width: 135px; 
+            margin-bottom: 15px; 
+        }
+
+        .beneficios-section { 
+            padding: 60px 20px; 
+            text-align: center; 
+            background-color: #e9e8e8;
+        }
+        .beneficios-container { display: flex; 
+            justify-content: center; 
+            gap: 40px; 
+            margin-top: 40px; 
+            flex-wrap: wrap; 
+        }
+        .beneficios-item { max-width: 300px; }
+        
         .final-cta { 
             padding: 80px 20px; 
             text-align: center; 
@@ -75,70 +136,6 @@
             border-radius: 5px; 
             margin: 0 10px; 
         }
-        .footer { 
-            background-color: #282828; 
-            color: #fff; 
-            padding: 60px 40px; 
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-            gap: 30px;
-            text-align: left;
-        }
-
-        .footer-column {
-            min-width: 200px;
-        }
-        
-        .footer-column h3 {
-            font-size: 1.5em;
-            margin-bottom: 20px;
-        }
-        
-        .footer-column h4 {
-            font-size: 0.9em;
-            color: #a0a0a0;
-            margin-bottom: 15px;
-            text-transform: uppercase;
-        }
-
-        .footer-column p, .footer-column a {
-            font-size: 0.9em;
-            color: #dcdcdc;
-            text-decoration: none;
-        }
-
-        .footer-column a:hover {
-            text-decoration: underline;
-            color: #fff;
-        }
-        
-        .footer-column ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .footer-column ul li {
-            margin-bottom: 12px;
-        }
-        
-        .social-link {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .social-link img {
-            width: 16px;
-            height: 16px;
-        }
-        
-        .app-store-btn img {
-            width: 135px;
-            margin-bottom: 15px;
-        }
-
     </style>
 </head>
 <body>
@@ -146,45 +143,58 @@
     <header class="header">
         <img id="logo" src="" alt="website-logo">
         <nav class="nav">
-            <a href="#">Sobre nós</a>
-            <a href="#">Novidades</a>
-            <a href="#">Aplicativo</a>
+            <a href="#beneficios">Benefícios</a>
+            <a href="#como-funciona">Como Funciona</a>
+            <a href="#comunidade">Comunidade</a>
         </nav>
     </header>
 
     <section class="banner">
         <h1>Corra no Frescor. Deixe o Calor para Trás.</h1>
         <p>Green Pace encontra as rotas mais frescas e arborizadas da sua cidade, para que seu treino seja revigorante, não desgastante.</p>
-        <a href="#">Começar</a>
+        <a href="#final-cta">Começar</a>
     </section>
 
     <main>
-        <div class="content1">
-        <h2>A Cidade Ferve. Seu Treino Não Precisa.</h2>
-        <p>O asfalto quente, a falta de árvores e os prédios criam "ilhas de calor" que tornam a corrida urbana um desafio. Essa exposição ao calor excessivo não só diminui seu desempenho, como também afeta seu bem-estar e pode ser prejudicial à saúde.</p>
-        </div>
-
-        <div class="banner2">
-            <div class="banner-text">
-                <h2>Treine com Inteligência, Conforto e Performance</h2>
-                <p>Nossa tecnologia exclusiva mapeia a temperatura da cidade em tempo real, criando rotas que priorizam áreas verdes, sombras e corredores de vento para um treino muito mais agradável.</p>
-            </div>
-            <img id="img_banner1" src="https://runplace.com.br/wp-content/uploads/2020/01/ajustes-na-corrida-1536x864.jpg" alt="">
-        </div>
-
         <div class="content">
-        <h2>Simples como 1, 2, 3... Correr!</h2>
+            <h2>A Cidade Ferve. Seu Treino Não Precisa.</h2>
+            <p style="max-width: 700px; margin: 20px auto;">O asfalto quente, a falta de árvores e os prédios criam "ilhas de calor" que tornam a corrida urbana um desafio. Essa exposição ao calor excessivo não só diminui seu desempenho, como também afeta seu bem-estar e pode ser prejudicial à saúde.</p>
+        </div>
+
+        <section id="beneficios" class="beneficios-section">
+            <h2>Treine com Inteligência, Conforto e Performance</h2>
+            <div class="beneficios-container">
+                <div class="beneficios-item">
+                    <h3>Rotas Inteligentes e Frescas</h3>
+                    <p>Nossa tecnologia exclusiva mapeia a temperatura da cidade em tempo real, criando rotas que priorizam áreas verdes, sombras e corredores de vento para um treino muito mais agradável.</p>
+                </div>
+                <div class="beneficios-item">
+                    <h3>Melhore seu Desempenho</h3>
+                    <p>Correr em temperaturas mais amenas reduz o estresse térmico no corpo, permitindo que você mantenha o ritmo por mais tempo, melhore seus resultados e tenha uma recuperação mais rápida.</p>
+                </div>
+                <div class="beneficios-item">
+                    <h3>Saúde e Bem-Estar</h3>
+                    <p>Reduza os riscos de exaustão pelo calor e desidratação. Com Green Pace, cada corrida é uma oportunidade de se conectar com os pontos mais saudáveis e verdes da sua cidade.</p>
+                </div>
+            </div>
+        </section>
+
+        <div id="como-funciona" class="banner2" style="background-color: #ffffff;">
+            <div class="banner-text">
+                <h2>Simples como 1, 2, 3... Correr!</h2>
                 <p><strong>1. Mapeamos o Calor:</strong> Analisamos dados de satélite e sensores para identificar as ilhas de calor e as zonas mais frescas.</p>
                 <p><strong>2. Você Define seu Treino:</strong> Informe a distância que quer percorrer ou o tempo de treino desejado.</p>
                 <p><strong>3. Nós Criamos a Rota Ideal:</strong> Em segundos, o Green Pace traça o melhor percurso, otimizado para o seu conforto térmico.</p>
+            </div>
+            <img id="img_banner1" src="https://runplace.com.br/wp-content/uploads/2020/01/ajustes-na-corrida-1536x864.jpg" alt="Mulher ajustando o tênis de corrida">
         </div>
 
-        <div class="banner2">
+        <div id="comunidade" class="banner2" style="flex-direction: row-reverse;">
             <div class="banner-text">
                 <h2>Mais que um Mapa, uma Comunidade</h2>
                 <p>Monitore seu progresso, compartilhe suas conquistas e descubra as rotas frescas favoritas de outros corredores. No Green Pace, você se conecta com pessoas que, como você, buscam uma experiência de treino mais inteligente e saudável.</p>
             </div>
-            <img id="img_banner1" src="https://offloadmedia.feverup.com/saopaulosecreto.com/wp-content/uploads/2024/09/18164355/grupos-de-corrida-sp-Copia-1024x816.jpg" alt="">
+            <img id="img_banner1" src="https://offloadmedia.feverup.com/saopaulosecreto.com/wp-content/uploads/2024/09/18164355/grupos-de-corrida-sp-Copia-1024x816.jpg" alt="Grupo de pessoas correndo juntas na cidade">
         </div>
         
         <section id="final-cta" class="final-cta">
@@ -195,6 +205,7 @@
                 <a href="#">Começar</a>
             </div>
         </section>
+
     </main>
 
     <footer class="footer">
@@ -205,7 +216,6 @@
             <br>
             <a href="#">Política de privacidade</a>
         </div>
-
         <div class="footer-column">
             <h4>Menu</h4>
             <ul>
@@ -216,7 +226,6 @@
                 <li><a href="#">Sobre</a></li>
             </ul>
         </div>
-
         <div class="footer-column">
             <h4>Seguir</h4>
             <ul>
@@ -224,7 +233,6 @@
                 <li><a href="#" class="social-link"><img src="https://i.imgur.com/0V8iWfA.png" alt="Tik Tok icon"> Tik Tok</a></li>
             </ul>
         </div>
-
         <div class="footer-column">
             <h4>Começar</h4>
             <ul>
@@ -233,5 +241,5 @@
             </ul>
         </div>
     </footer>
-    </body>
+</body>
 </html>
