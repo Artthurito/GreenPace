@@ -1,3 +1,5 @@
+/* ===== ESTILOS GERAIS E RESET ===== */
+
 html {
     box-sizing: border-box;
 }
@@ -9,23 +11,23 @@ html {
 body {
     font-family: sans-serif;
     margin: 0;
-    background-color: var(--clr-bg);
-    color: var(--clr-text-dark);
+    color: #333; /* Cor do texto padrão */
     line-height: 1.6;
-    /*Footer setup*/
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
+    min-height: 100vh; /* Garante que o body ocupe no mínimo a altura total da tela */
 }
 
 main.main-content {
-    flex: 1; /* Allows main content to grow and push footer down */
+    flex: 1; /* Faz o conteúdo principal crescer e empurrar o rodapé para baixo */
 }
 
 h1, h2, h3 {
     margin-top: 0;
-    text-align:center;
+    text-align: center;
 }
+
+/* ===== LAYOUT E CONTAINERS ===== */
 
 .container {
     width: 100%;
@@ -39,28 +41,29 @@ h1, h2, h3 {
     padding: 40px;
 }
 
+/* ===== HEADER (CABEÇALHO) ===== */
+
 .header {
     background-color: #f8f8f8;
     padding: 20px 0;
     display: flex;
     align-items: center;
-    top:0;
-    position:sticky;
-    border-bottom:5px solid #282828;
-    z-index:1000;
+    top: 0;
+    position: sticky; /* Efeito "grudento" ao rolar a página */
+    border-bottom: 5px solid #282828;
+    z-index: 1000;
 }
 
 .header .container {
-    max-width:none;
-    
-    display:flex;
-    justify-content:space-between;
+    max-width: none;
+    display: flex;
+    justify-content: space-between;
     padding: 0 20px;
 }
 
 .header a {
-    border-left:2px solid #282828;
-    padding-left:20px
+    border-left: 2px solid #282828;
+    padding-left: 20px;
 }
 
 #logo {
@@ -74,8 +77,10 @@ h1, h2, h3 {
     color: #333;
 }
 
+/* ===== BANNER PRINCIPAL ===== */
+
 .banner {
-    padding: 100px 0px;
+    padding: 100px 0;
     text-align: center;
     background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('');
     background-size: cover;
@@ -87,60 +92,43 @@ h1, h2, h3 {
     font-size: 3em;
 }
 
-.banner a {
-    color: white;
-    font-weight: bold;
-    text-decoration:none;
-}
+/* ===== CORES DE FUNDO (UTILITÁRIOS) ===== */
 
-.banner a:hover{
-    color: #d1d1d1;
-}
-
-.img1 {
-    width: 400px;
-    height: auto;
-    border-radius: 12px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-}
-
-.img1:hover{
-    transform:scale(103%);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.35);
-}
-
-/*background colors*/
-
-.dbg {
+.dbg { /* Dark Background Gray */
     background-color: #e9e8e8;
 }
 
-.ddbg {
+.ddbg { /* Darker Dark Background Gray */
     background-color: #333;
 }
 
-.lbg{
+.lbg { /* Light Background */
     background-color: #ffffff;
 }
 
-/*flexbox stuff*/
+/* ===== ESTRUTURA FLEXBOX (COMPONENTES) ===== */
 
 .flexbox {
-    flex:1;
+    flex: 1;
     display: flex;
     justify-content: center;
-    align-items:center;
+    align-items: center;
     gap: 20px;
     flex-wrap: wrap;
 }
 
 .flexcard {
-    border-radius:12px;
-    padding:20px;
+    border-radius: 12px;
+    padding: 20px;
 }
 
-/*specific flexbox stuff*/
+/* ===== SEÇÕES ESPECÍFICAS DA PÁGINA ===== */
+/* Estilização de cada seção individual do corpo do site. */
+
+/* Seção: Benefícios */
+#beneficios .flexbox {
+    align-items: stretch; /* Garante que os cards tenham a mesma altura */
+}
 
 #beneficios .flexcard {
     max-width: 30%;
@@ -153,58 +141,90 @@ h1, h2, h3 {
     box-shadow: 0 8px 15px rgba(0, 0, 0, 0.25);
 }
 
+/* Seção: Como Funciona */
 #como-funciona .flexcard {
-    max-width:50%;
+    max-width: 50%;
 }
 
+/* Seção: Comunidade */
 #comunidade .flexbox {
-    flex-direction:row-reverse;
+    flex-direction: row-reverse; /* Inverte a ordem dos itens (imagem à esquerda) */
 }
 
 #comunidade .flexcard {
-    max-width:50%;
+    max-width: 50%;
 }
 
-/*final-cta*/
-
-.final-cta .flexbox {
-    flex-direction:column;
-}
-
-.final-cta .flexcard {
-    padding:30px 0;
-}
-
-.final-cta .flexcard + .flexcard {
-    padding-top:0;
-}
-
+/* Seção: Final Call to Action (CTA) */
 .final-cta {
     text-align: center;
     background-color: #333;
     color: white;
 }
 
-.final-cta a {
+.final-cta .flexbox {
+    flex-direction: column;
+}
+
+.final-cta .flexcard {
+    padding: 30px 0;
+}
+
+.final-cta .flexcard + .flexcard {
+    padding-top: 0;
+}
+
+/* ===== BOTÃO PRINCIPAL (.btn) ===== */
+/* Estilo padrão para os botões de ação do site. */
+
+.btn {
     background-color: #4CAF50;
     color: white;
     padding: 15px 30px;
     text-decoration: none;
     border-radius: 5px;
-    margin: 10px;
+    font-weight: bold;
+    display: inline-block;
+    transition: background-color 0.3s ease;
 }
+
+.btn:hover {
+    background-color: #45a049; /* Efeito de escurecer ao passar o mouse */
+    color: white;
+}
+
+/* ===== ELEMENTOS DE MÍDIA (IMAGENS) ===== */
+
+.img1 {
+    width: 400px;
+    height: auto;
+    border-radius: 12px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.img1:hover {
+    transform: scale(103%);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.35);
+}
+
+/* ===== RODAPÉ (FOOTER) ===== */
 
 .footer {
     background-color: #282828;
     color: #fff;
     padding: 60px 0;
-    justify-content: space-around;
     text-align: left;
+}
+
+.footer .flexbox {
+    justify-content: space-around;
+    align-items: flex-start; /* Alinha as colunas pelo topo */
 }
 
 .footer-column {
     min-width: 200px;
-    padding:10px;
+    padding: 10px;
 }
 
 .footer-column h3 {
@@ -256,24 +276,21 @@ h1, h2, h3 {
     margin-bottom: 15px;
 }
 
-/*responsiveness fixes for other devices*/
+/* ===== AJUSTES DE RESPONSIVIDADE ===== */
 
 @media (max-width: 768px) {
-    /* Stack flexbox items on smaller screens */
     .flexbox {
         flex-direction: column;
     }
 
-    /* Allow cards to take up more space on mobile */
     #beneficios .flexcard,
     #como-funciona .flexcard,
     #comunidade .flexcard {
-        max-width: 100%; /* Let cards take full width of container */
+        max-width: 100%;
     }
 
-    /* Ensure reversed sections look correct */
     #comunidade .flexbox {
-        flex-direction: column; /* Override the row-reverse */
+        flex-direction: column;
     }
 
     .header {
@@ -282,10 +299,10 @@ h1, h2, h3 {
     }
 
     .img1 {
-        max-width:70%;
-        height:auto;
-        display:block;
-        margin-left:auto;
-        margin-right:auto;
+        max-width: 70%;
+        height: auto;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
     }
 }
