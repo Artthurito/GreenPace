@@ -1,128 +1,291 @@
-body { 
-            font-family: sans-serif; 
-            margin: 0;
-        }
-        .header {
-            background-color: #f8f8f8;
-            padding: 20px; 
-            text-align: center; 
-            display: flex; 
-            align-items: center; 
-            gap: 20px; 
-        }
-        #logo{ 
-            text-align: left; 
-            position: relative; 
-        }
-        .nav a { margin: 0 15px; text-decoration: none; color: #333; }
-        
-        .banner { 
-            padding: 100px 20px; 
-            text-align: center; 
-            background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('');
-            background-size: cover;
-            background-position: center;
-            color: white;
-        }
-        .banner h1 { font-size: 3em; }
+html {
+    box-sizing: border-box;
+}
 
-        .banner a { color: white; font-weight: bold; }
+*, *:before, *:after {
+    box-sizing: inherit;
+}
 
-        .content { 
-            padding: 60px 20px;
-            text-align: center; 
-            background-color: #ffffff;
-        }
-        
-        .banner2 { 
-            padding: 60px 40px;
-            display: flex; 
-            align-items: center; 
-            justify-content: space-between; 
-            gap: 40px; 
-            background-color: #e9e8e8;
-        }
-        .banner-text { flex: 1; }
+body {
+    font-family: sans-serif;
+    margin: 0;
+    background-color: var(--clr-bg);
+    color: var(--clr-text-dark);
+    line-height: 1.6;
+    /*Footer setup*/
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
 
-        #img_banner1{ 
-            width: 450px; 
-            height: auto; 
-            border-radius: 8px; 
-        }
-        .beneficios-section { 
-            padding: 60px 20px; 
-            text-align: center; 
-            background-color: #e9e8e8;
-        }
-        .beneficios-container { display: flex; 
-            justify-content: center; 
-            gap: 40px; 
-            margin-top: 40px; 
-            flex-wrap: wrap; 
-        }
-        .beneficios-item { max-width: 300px; }
+main.main-content {
+    flex: 1; /* Allows main content to grow and push footer down */
+}
 
-        .final-cta { 
-            padding: 80px 20px; 
-            text-align: center; 
-            background-color: #333; 
-            color: white; 
-        }
-        .final-cta a { 
-            background-color: #4CAF50; 
-            color: white; 
-            padding: 15px 30px; 
-            text-decoration: none; 
-            border-radius: 5px; 
-            margin: 0 10px; 
-        }
-        .footer { 
-            background-color: #282828; 
-            color: #fff; 
-            padding: 60px 40px; 
-            display: flex; 
-            justify-content: space-around; 
-            flex-wrap: wrap; 
-            gap: 30px; 
-            text-align: left; 
-        }
-        .footer-column { min-width: 200px; }
+h1, h2, h3 {
+    margin-top: 0;
+    text-align:center;
+}
 
-        .footer-column h3 { 
-            font-size: 1.5em; 
-            margin-bottom: 20px; 
-        }
-        .footer-column h4 { 
-            font-size: 0.9em; 
-            color: #a0a0a0; 
-            margin-bottom: 15px; 
-            text-transform: uppercase; 
-        }
-        .footer-column p, .footer-column a { 
-            font-size: 0.9em; 
-            color: #dcdcdc; 
-            text-decoration: none; 
-        }
-        .footer-column a:hover { 
-            text-decoration: underline; 
-            color: #fff; 
-        }
-        .footer-column ul { 
-            list-style: none; 
-            padding: 0; 
-            margin: 0; 
-        }
-        .footer-column ul li { margin-bottom: 12px; }
-        .social-link { 
-            display: flex; 
-            align-items: center; 
-            gap: 10px; 
-        }
-        .social-link img { 
-            width: 16px; 
-            height: 16px; 
-        }
-        .app-store-btn img { 
-            width: 135px; 
-            margin-bottom: 15px; 
-        }
+.container {
+    width: 100%;
+    max-width: 1080px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 20px;
+}
+
+.textbox{
+    padding: 40px;
+}
+
+.header {
+    background-color: #f8f8f8;
+    padding: 20px 0;
+    display: flex;
+    align-items: center;
+    top:0;
+    position:sticky;
+    border-bottom:5px solid #282828;
+    z-index:1000;
+}
+
+.header .container {
+    max-width:none;
+    
+    display:flex;
+    justify-content:space-between;
+    padding: 0 20px;
+}
+
+.header a {
+    border-left:2px solid #282828;
+    padding-left:20px
+}
+
+#logo {
+    text-align: left;
+    position: relative;
+}
+
+.nav a {
+    margin: 0 15px;
+    text-decoration: none;
+    color: #333;
+}
+
+.banner {
+    padding: 100px 0px;
+    text-align: center;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('');
+    background-size: cover;
+    background-position: center;
+    color: white;
+}
+
+.banner h1 {
+    font-size: 3em;
+}
+
+.banner a {
+    color: white;
+    font-weight: bold;
+    text-decoration:none;
+}
+
+.banner a:hover{
+    color: #d1d1d1;
+}
+
+.img1 {
+    width: 400px;
+    height: auto;
+    border-radius: 12px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.img1:hover{
+    transform:scale(103%);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.35);
+}
+
+/*background colors*/
+
+.dbg {
+    background-color: #e9e8e8;
+}
+
+.ddbg {
+    background-color: #333;
+}
+
+.lbg{
+    background-color: #ffffff;
+}
+
+/*flexbox stuff*/
+
+.flexbox {
+    flex:1;
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.flexcard {
+    border-radius:12px;
+    padding:20px;
+}
+
+/*specific flexbox stuff*/
+
+#beneficios .flexcard {
+    max-width: 30%;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#beneficios .flexcard:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.25);
+}
+
+#como-funciona .flexcard {
+    max-width:50%;
+}
+
+#comunidade .flexbox {
+    flex-direction:row-reverse;
+}
+
+#comunidade .flexcard {
+    max-width:50%;
+}
+
+/*final-cta*/
+
+.final-cta .flexbox {
+    flex-direction:column;
+}
+
+.final-cta .flexcard {
+    padding:30px 0;
+}
+
+.final-cta .flexcard + .flexcard {
+    padding-top:0;
+}
+
+.final-cta {
+    text-align: center;
+    background-color: #333;
+    color: white;
+}
+
+.final-cta a {
+    background-color: #4CAF50;
+    color: white;
+    padding: 15px 30px;
+    text-decoration: none;
+    border-radius: 5px;
+    margin: 10px;
+}
+
+.footer {
+    background-color: #282828;
+    color: #fff;
+    padding: 60px 0;
+    justify-content: space-around;
+    text-align: left;
+}
+
+.footer-column {
+    min-width: 200px;
+    padding:10px;
+}
+
+.footer-column h3 {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+}
+
+.footer-column h4 {
+    font-size: 0.9em;
+    color: #a0a0a0;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+}
+
+.footer-column p, .footer-column a {
+    font-size: 0.9em;
+    color: #dcdcdc;
+    text-decoration: none;
+}
+
+.footer-column a:hover {
+    text-decoration: underline;
+    color: #fff;
+}
+
+.footer-column ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-column ul li {
+    margin-bottom: 12px;
+}
+
+.social-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.social-link img {
+    width: 16px;
+    height: 16px;
+}
+
+.app-store-btn img {
+    width: 135px;
+    margin-bottom: 15px;
+}
+
+/*responsiveness fixes for other devices*/
+
+@media (max-width: 768px) {
+    /* Stack flexbox items on smaller screens */
+    .flexbox {
+        flex-direction: column;
+    }
+
+    /* Allow cards to take up more space on mobile */
+    #beneficios .flexcard,
+    #como-funciona .flexcard,
+    #comunidade .flexcard {
+        max-width: 100%; /* Let cards take full width of container */
+    }
+
+    /* Ensure reversed sections look correct */
+    #comunidade .flexbox {
+        flex-direction: column; /* Override the row-reverse */
+    }
+
+    .header {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .img1 {
+        max-width:70%;
+        height:auto;
+        display:block;
+        margin-left:auto;
+        margin-right:auto;
+    }
+}
