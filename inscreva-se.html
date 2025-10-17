@@ -21,19 +21,84 @@
 
     <section class="banner">
         <h1>Inscrição Green Pace.</h1>
-        <p>Subpágina de inscrição.</p>
-        <a href="#final-cta">Começar</a>
     </section>
 
     <main class="main-content">
         <section class="dbg">
-            <div class="container">
-                <div class="flexbox">
-                    <div class="textbox">
-                        <h2>Inscreva-se</h2>
-                        <p>Essa é a subpágina de inscrição.</p>
+            <div class="signup-container">
+                <h1>Inscreva-se gratuitamente</h1>
+                <form id="inscricaoForm" action="/inscricao" method="POST">
+                    <!-- Nome -->
+                    <div class="input-group">
+                        <label for="nome">Nome Completo:</label>
+                        <input type="text" id="nome" name="nome" required placeholder="Digite seu nome completo">
                     </div>
-                </div>
+
+                    <!-- Usuário (nome de exibição) -->
+                    <div class="input-group">
+                        <label for="displayName">Nome de exibição / Usuário:</label>
+                        <input type="text" id="displayName" name="displayName" required placeholder="Ex.: maria.s">
+                    </div>
+
+                    <!-- E-mail -->
+                    <div class="input-group">
+                        <label for="email">E-mail:</label>
+                        <input type="email" id="email" name="email" required placeholder="Digite seu e-mail">
+                    </div>
+
+                    <!-- Senha -->
+                    <div class="input-group">
+                        <label for="senha">Senha:</label>
+                        <input type="password" id="senha" name="senha" required placeholder="Crie uma senha" minlength="12"
+                               pattern="(?=.*[A-Z])(?=.*\d).{12,}" aria-describedby="senha-hint" title="A senha deve conter pelo menos: Uma letra maiúscula, Um número, 12 caracteres.">
+                        <div id="senha-hint" class="hint hidden" aria-hidden="true">
+                            A senha deve conter pelo menos:
+                            <ul>
+                                <li>Uma letra maiúscula;</li>
+                                <li>Um número;</li>
+                                <li>12 caracteres.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Confirmar Senha -->
+                    <div class="input-group">
+                        <label for="confirmar_senha">Confirmar Senha:</label>
+                        <input type="password" id="confirmar_senha" name="confirmar_senha" required placeholder="Confirme sua senha">
+                        <div id="erro-senha" class="error"></div>
+                    </div>
+
+                    <!-- Data de Nascimento -->
+                    <div class="input-group">
+                        <label for="birthdate">Data de nascimento:</label>
+                        <input type="date" id="birthdate" name="birthdate" required max="2025-10-17">
+                    </div>
+
+                    <!-- Gênero -->
+                    <div class="input-group">
+                        <label for="genero">Gênero:</label>
+                        <select id="genero" name="genero">
+                            <option value="masculino">Masculino</option>
+                            <option value="feminino">Feminino</option>
+                            <option value="outro">Outro</option>
+                        </select>
+                    </div>
+
+                    <!-- Termos de uso -->
+                    <div class="input-group">
+                        <label>
+                            <input type="checkbox" name="aceito_termos" required>
+                            Aceito os <a href="/termos" target="_blank">termos e condições</a>.
+                        </label>
+                    </div>
+
+                    <!-- Botão de Envio -->
+                    <button type="submit" class="btn">Criar Conta</button>
+                    <p class="small-link" style="text-align:center;margin-top:10px;">
+                        Já é membro? <a href="login.html">Fazer login</a>
+                    </p>
+                    <div id="signup-message" class="error" style="text-align:center;margin-top:8px;"></div>
+                </form>
             </div>
         </section>
     </main>
@@ -67,11 +132,12 @@
             <div class="footer-column">
                 <h4>Começar</h4>
                 <ul>
-                    <li><a href="#">Inscreva-se</a></li>
-                    <li><a href="#">Login</a></li>
+                    <li><a href="inscreva-se.html">Inscreva-se</a></li>
+                    <li><a href="login.html">Login</a></li>
                 </ul>
             </div>
         </div>
     </footer>
+    <script src="script.js"></script>
 </body>
 </html>
