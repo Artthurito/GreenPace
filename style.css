@@ -478,3 +478,58 @@ p.subtitle {
         margin: 0 8px;
     }
 }
+
+/* ===== Estilos específicos da página inscreva-se ===== */
+.signup-container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.signup-container h1 {
+    text-align: center;
+    color: #333;
+    margin: 0 0 20px 0;
+}
+.input-group {
+    margin-bottom: 15px;
+}
+.input-group label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+    color: #555;
+}
+.input-group input, .input-group select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+.input-group input[type="checkbox"] {
+    width: auto;
+}
+.terms { font-size: 14px; color: #555; }
+.terms a { color: #4CAF50; text-decoration: none; }
+.error { color: red; font-size: 14px; }
+.hint {
+    color: #555;
+    font-size: 0.95em;
+    margin-top: 6px;
+}
+.hint ol {
+    margin: 6px 0 0 18px;
+}
+.hidden { display: none; }
+.small-link { text-align: center; margin-top: 10px; }
+/* Restaurar aparência do botão na página de inscrição (override específico) */
+.signup-container .btn {
+    width: 100%;
+    padding: 15px 32px;
+    border-radius: 5px;
+    font-size: 18px;
+}
