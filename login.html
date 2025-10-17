@@ -22,18 +22,32 @@
     <section class="banner">
         <h1>Login Green Pace.</h1>
         <p>Aqui você pode realizar o login em nosso website.</p>
-        <a href="#final-cta">Começar</a>
     </section>
 
     <main class="main-content">
         <section class="dbg">
-            <div class="container">
-                <div class="flexbox">
-                    <div class="textbox">
-                        <h2>Login</h2>
-                        <p>Essa é a subpágina de login.</p>
+            <div class="signup-container">
+                <h1>Fazer login</h1>
+                <form id="loginForm" action="/login" method="POST">
+                    <div class="input-group">
+                        <label for="login-identifier">E-mail ou usuário:</label>
+                        <input id="login-identifier" name="identifier" type="text" required placeholder="seu@exemplo.com ou usuario">
                     </div>
-                </div>
+
+                    <div class="input-group">
+                        <label for="login-password">Senha:</label>
+                        <input id="login-password" name="password" type="password" required placeholder="Sua senha">
+                    </div>
+
+                    <div class="input-group">
+                        <label><input type="checkbox" name="remember"> Manter-me conectado</label>
+                    </div>
+
+                    <button type="submit" class="btn">Entrar</button>
+                    <p class="small-link">Ainda não tem conta? <a href="inscreva-se.html">Inscrever-se</a></p>
+                    <div id="login-message" class="error" style="text-align:center;margin-top:8px;"></div>
+                    <p class="small-link"><a href="#">Esqueceu a senha?</a></p>
+                </form>
             </div>
         </section>
     </main>
@@ -67,11 +81,12 @@
             <div class="footer-column">
                 <h4>Começar</h4>
                 <ul>
-                    <li><a href="#">Inscreva-se</a></li>
-                    <li><a href="#">Login</a></li>
+                    <li><a href="inscreva-se.html">Inscreva-se</a></li>
+                    <li><a href="login.html">Login</a></li>
                 </ul>
             </div>
         </div>
     </footer>
+    <script src="script.js"></script>
 </body>
 </html>
