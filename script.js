@@ -76,6 +76,96 @@
     });
 })();
 
+// Map initialization for rotas.html — centralized from inline script
+(function(){
+    // only run on pages that include the map element
+    if(!document.getElementById('map')) return;
+    try {
+        var map = L.map('map').setView([-23.5505, -46.6333], 14);
+
+        L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '© OpenStreetMap'
+        }).addTo(map);
+
+        var pontos = [];
+        var rota = null;
+
+        // Clique no mapa para adicionar pontos e criar rota
+        map.on('click', function (e) {
+            pontos.push(e.latlng);
+            L.marker(e.latlng).addTo(map);
+
+                if (pontos.length === 2) {
+                    if (rota) map.removeControl(rota);
+
+
+                    // perfil fixo: caminhada (para rotas a pé)
+                    var profile = 'walking';
+                    var lineColor = '#4caf50';
+
+                    rota = L.Routing.control({
+                        waypoints: pontos,
+                        router: L.Routing.osrmv1({
+                            serviceUrl: "https://router.project-osrm.org/route/v1",
+                            profile: profile
+                        }),
+                        createMarker: function () { return null; },
+                        lineOptions: { styles: [{ color: lineColor, weight: 5 }] },
+                        showAlternatives: true
+                    }).addTo(map);
+
+                    // quando a rota for encontrada, mostrar distância/tempo em #info
+                    rota.on('routesfound', function(e){
+                        try{
+                            var routes = e.routes || [];
+                            if(routes.length > 0){
+                                var s = routes[0].summary;
+                                var km = (s.totalDistance/1000);
+                                var minutes = Math.round(s.totalTime/60);
+                                var infoEl = document.getElementById('info');
+                                if(infoEl){
+                                    infoEl.textContent = 'Caminhada — ' + km.toFixed(2) + ' km • ' + minutes + ' min';
+                                }
+                            }
+                        }catch(err){
+                            console.warn('Erro ao processar resumo da rota:', err);
+                        }
+                    });
+
+                    rota.on('routingerror', function(err){
+                        var infoEl = document.getElementById('info');
+                        if(infoEl) infoEl.textContent = 'Não foi possível calcular a rota. Tente novamente.';
+                        console.error('Routing error', err);
+                    });
+
+                    // reset para permitir nova rota
+                    pontos = [];
+                }
+        });
+
+        // Botão limpar rota
+        var limparBtn = document.getElementById('limpar');
+        if(limparBtn){
+            limparBtn.addEventListener('click', function(){
+                if (rota) {
+                    map.removeControl(rota);
+                    rota = null;
+                }
+                // remove marcadores (instâncias de L.Marker)
+                map.eachLayer(function (layer) {
+                    if (layer instanceof L.Marker) map.removeLayer(layer);
+                });
+                // restaurar instrução padrão
+                var infoEl = document.getElementById('info');
+                if(infoEl) infoEl.textContent = 'Clique primeiro na saída, depois no destino';
+            });
+        }
+    } catch (err) {
+        console.error('Erro ao inicializar o mapa:', err);
+    }
+})();
+
 // Login form handling (simulado)
 (function(){
     // util: hash string com SHA-256 e retorna hex
