@@ -6,6 +6,9 @@
     <meta name="GreenPace, Rotas" content="Corridas mais frescas e inteligentes em meio à selva de concreto.">
     <meta name="description" content="Descubra rotas que evitam as ilhas de calor da sua cidade. Treine com mais conforto, performance e bem-estar com o Green Pace.">
     <link rel="stylesheet" href="style.css" >
+    <!-- Leaflet & Routing Machine styles -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine/dist/leaflet-routing-machine.css">
     <title>Green Pace - Corra no Frescor</title>
 </head>
 <body>
@@ -14,19 +17,20 @@
         <a href="index.html"><img id="logo" src="Imagens/1.png" alt="website-logo" width="100px"></a>
     </header>
 
-    <section class="banner">
-        <h1>Rotas Green Pace.</h1>
-        <p>Aqui você pode saber mais sobre as rotas do Green Pace.</p>
-        <a href="#final-cta">Começar</a>
-    </section>
-
     <main class="main-content">
         <section class="dbg">
             <div class="container">
                 <div class="flexbox">
                     <div class="textbox">
-                        <h2>Rotas</h2>
-                        <p>Essa é a subpágina de rotas.</p>
+                                <h2>Rotas</h2>
+                                <p>Escolha sua rota clicando no mapa — clique primeiro na saída e depois no destino.</p>
+
+                                <div class="map-controls">
+                                    <div id="info" class="map-info">Clique primeiro na saída, depois no destino</div>
+                                    <button id="limpar" class="btn">Limpar rota</button>
+                                </div>
+
+                                <div id="map" aria-label="Mapa interativo de rotas"></div>
                     </div>
                 </div>
             </div>
@@ -67,5 +71,10 @@
             </div>
         </div>
     </footer>
+        <!-- Leaflet & Routing scripts -->
+        <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+        <script src="https://unpkg.com/leaflet-routing-machine/dist/leaflet-routing-machine.js"></script>
+        <!-- Site script (contains map initialization for this page) -->
+        <script src="script.js"></script>
 </body>
 </html>
