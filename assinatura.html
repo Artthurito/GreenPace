@@ -11,7 +11,32 @@
 <body>
 
     <header class="header">
-        <a href="index.html"><img id="logo" src="Imagens/1.png" alt="website-logo" width="100px"></a>
+        <div class="container">
+            <a href="index.html" class="header-logo">
+                <img id="logo" src="Imagens/1.png" alt="website-logo">
+            </a>
+            
+            <div class="header-right-group">
+                <nav class="nav">
+                    <a href="#benefícios">Benefícios</a>
+                    <a href="#assinatura">Planos</a>
+                </nav>
+
+                <div class="user-menu">
+                    <span class="user-menu-trigger">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="12" cy="7" r="4"></circle>
+                        </svg>
+                    </span>
+
+                    <div class="user-menu-content">
+                        <a href="login.html" class="user-menu-btn">Login</a>
+                        <a href="inscreva-se.html" class="user-menu-btn btn-primary">Inscreva-se</a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </header>
 
     <main id="assinatura"class="main-content">
@@ -48,7 +73,7 @@
             </div>
         </section>
 
-        <section class="dbg">
+        <section id="benefícios" class="dbg">
             <div class="container textbox">
                 <div class="textbox">
                     <h2>Benefícios de assinar o nosso plano:</h2>
