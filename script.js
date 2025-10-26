@@ -1,4 +1,4 @@
-// Melhorias de validação: ativar validação nativa e tratar confirmação de senha
+// Melhorias de validação: ativar validação nativa e tratar confirmação de senha.
 (function(){
     const form = document.getElementById('inscricaoForm');
     if(!form) return;
