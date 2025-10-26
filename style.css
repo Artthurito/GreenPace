@@ -277,6 +277,87 @@ p.subtitle {
     font-size: 0.9em;
 }
 
+#assinatura .flexcard.lbg {
+    background-color: #f0f0f0;
+}
+
+#assinatura .img2 {
+    height: 40px;
+    width: auto;
+    object-fit: contain;
+}
+
+#assinatura th, td{
+    text-align: center;
+}
+
+#assinatura ul{
+    list-style: none;
+    text-align: center;
+    font-size:1.5rem;
+    margin-top:2rem;
+    margin-bottom:2rem;
+}
+
+#assinatura .table-container{
+    max-width:75%;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+/* ===== ESTILOS PARA TABELA ===== */
+
+/* Contêiner da tabela, se precisar de rolagem horizontal em telas pequenas */
+.table-container {
+    width: 100%;
+    overflow-x: auto; /* Adiciona rolagem horizontal se a tabela for muito larga */
+    margin: 20px 0;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+table {
+    width: 100%; /* Faz a tabela ocupar toda a largura do seu contêiner */
+    border-collapse: collapse; /* Remove o espaçamento duplo entre as bordas */
+    font-size: 1rem; /* Tamanho de fonte base */
+    color: #333;
+    background-color: #fff;
+}
+
+/* Cabeçalho da Tabela (th) */
+table th {
+    background-color: #4CAF50; /* Um verde alinhado com o tema do seu site */
+    color: white; /* Texto branco para contrastar com o fundo verde */
+    font-weight: bold;
+    text-align: left; /* Alinha o texto do cabeçalho à esquerda */
+    padding: 16px 12px;
+    border-bottom: 2px solid #45a049;
+}
+
+/* Células da Tabela (td) */
+table td {
+    padding: 12px;
+    border-bottom: 1px solid #e9e8e8; /* Linha sutil para separar as linhas */
+    line-height: 1.5;
+}
+
+/* Linhas da Tabela (tr) */
+
+/* Efeito "zebra" (linhas alternadas) para melhor legibilidade */
+table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+/* Efeito hover (mudar a cor da linha ao passar o mouse) */
+table tr:hover {
+    background-color: #f1f1f1;
+    cursor: default; /* Pode mudar para 'pointer' se a linha for clicável */
+}
+
+/* Estilo para a última linha - remove a borda inferior */
+table tr:last-child td {
+    border-bottom: none;
+}
 
 /* ===== BOTÃO PRINCIPAL (.btn) ===== */
 
