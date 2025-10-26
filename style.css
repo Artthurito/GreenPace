@@ -1,8 +1,10 @@
-/* ===== ESTILOS GERAIS E RESET ===== */
+/* ===================================================================
+   1. ESTILOS GERAIS E RESET
+=================================================================== */
 
 html {
     box-sizing: border-box;
-    scroll-behavior: smooth; /* Rolagem suave para links internos */
+    scroll-behavior: smooth;
 }
 
 *, *:before, *:after {
@@ -16,12 +18,13 @@ body {
     line-height: 1.6;
     display: flex;
     flex-direction: column;
-    min-height: 100vh; /* Garante que o body ocupe no mínimo a altura total da tela */
+    min-height: 100vh;
     background-color: #fcfcfc;
 }
 
 main.main-content {
-    flex: 1; /* Faz o conteúdo principal crescer e empurrar o rodapé para baixo */
+    /* Faz o conteúdo principal crescer e empurrar o rodapé para baixo */
+    flex: 1; 
 }
 
 h1, h2, h3 {
@@ -58,7 +61,11 @@ p.subtitle {
     color: #555;
 }
 
-/* ===== LAYOUT E CONTAINERS ===== */
+/* ===================================================================
+   2. LAYOUT E COMPONENTES GLOBAIS
+=================================================================== */
+
+/* --- Containers e Layout --- */
 
 .container {
     width: 100%;
@@ -68,17 +75,134 @@ p.subtitle {
     padding: 60px 20px;
 }
 
-.textbox{
+.textbox {
     padding: 20px;
 }
 
-/* ===== HEADER (CABEÇALHO) ===== */
+.flexbox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.flexcard {
+    border-radius: 12px;
+    padding: 30px;
+    text-align: center;
+}
+
+/* --- Botão Principal --- */
+
+.btn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 15px 35px;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 1.1em;
+    display: inline-block;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 70, 0, 0.3);
+}
+
+.btn:hover {
+    background-color: #45a049;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0, 70, 0, 0.4);
+}
+
+/* --- Imagens --- */
+
+.img1 {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+    border-radius: 12px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    display: block;
+    margin: 0 auto;
+}
+
+.img1:hover {
+    transform: scale(1.02);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* --- Tabelas --- */
+
+.table-container {
+    width: 100%;
+    overflow-x: auto; /* Garante rolagem horizontal em telas pequenas */
+    margin: 20px 0;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 1rem;
+    color: #333;
+    background-color: #fff;
+}
+
+table th {
+    background-color: #4CAF50;
+    color: white;
+    font-weight: bold;
+    text-align: left;
+    padding: 16px 12px;
+    border-bottom: 2px solid #45a049;
+}
+
+table td {
+    padding: 12px;
+    border-bottom: 1px solid #e9e8e8;
+    line-height: 1.5;
+}
+
+table tr:nth-child(even) {
+    background-color: #f9f9f9; /* Efeito "zebra" */
+}
+
+table tr:hover {
+    background-color: #f1f1f1;
+    cursor: default;
+}
+
+table tr:last-child td {
+    border-bottom: none;
+}
+
+/* ===================================================================
+   3. CLASSES UTILITÁRIAS (Fundos, etc.)
+=================================================================== */
+
+.dbg { /* Fundo cinza claro */
+    background-color: #e9e8e8;
+}
+
+.ddbg { /* Fundo cinza escuro */
+    background-color: #333;
+}
+
+.lbg { /* Fundo branco (para cards internos) */
+    background-color: #ffffff;
+}
+
+/* ===================================================================
+   4. HEADER
+=================================================================== */
 
 .header {
     background-color: #f8f8f8;
     padding: 20px 0;
-    display: flex;
-    align-items: center;
     top: 0;
     position: sticky;
     border-bottom: 5px solid #4CAF50;
@@ -88,16 +212,32 @@ p.subtitle {
 
 .header .container {
     max-width: none;
+    margin: 0;
+    width: 100%;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-between; 
     align-items: center;
-    padding: 0 20px;
+    padding: 0 30px; 
+    box-sizing: border-box; 
+}
+
+/* --- Logo --- */
+.header-logo {
+    flex-shrink: 0;
 }
 
 #logo {
     height: 50px;
     width: auto;
     object-fit: contain;
+    display: block;
+}
+
+/* --- Navegação e Menu de Usuário --- */
+.header-right-group {
+    display: flex;
+    align-items: center;
+    gap: 20px;
 }
 
 .nav a {
@@ -112,12 +252,93 @@ p.subtitle {
     color: #4CAF50;
 }
 
-/* ===== BANNER PRINCIPAL ===== */
+/* --- Menu Dropdown de Usuário --- */
+.user-menu {
+    position: relative;
+    flex-shrink: 0;
+}
+
+.user-menu-trigger {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    padding: 8px;
+    border-radius: 50%;
+    transition: background-color 0.3s ease;
+}
+
+.user-menu-trigger svg {
+    stroke: #333;
+}
+
+.user-menu-content {
+    display: none;
+    position: absolute;
+    top: 100%; 
+    right: 0;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+    min-width: 220px;
+    padding: 15px;
+    z-index: 1100;
+    border: 1px solid #eee;
+
+    margin-top: 0; 
+    padding-top: 10px; 
+}
+
+/* --- Lógica do Hover do Dropdown --- */
+.user-menu:hover .user-menu-content {
+    display: block;
+}
+
+.user-menu:hover .user-menu-trigger {
+    background-color: #f0f0f0;
+}
+
+/* --- Botões internos do Dropdown --- */
+.user-menu-btn {
+    display: block;
+    width: 100%;
+    padding: 12px 20px;
+    text-decoration: none;
+    color: #333;
+    font-weight: 600;
+    border-radius: 6px;
+    text-align: center;
+    transition: background-color 0.3s ease;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+}
+
+.user-menu-btn:last-child {
+    margin-bottom: 0;
+}
+
+.user-menu-btn:not(.btn-primary):hover {
+    background-color: #f4f4f4;
+}
+
+.user-menu-btn.btn-primary {
+    background-color: #4CAF50;
+    color: white;
+    box-shadow: 0 2px 5px rgba(0, 70, 0, 0.2);
+}
+
+.user-menu-btn.btn-primary:hover {
+    background-color: #45a049;
+    color: white;
+}
+
+/* ===================================================================
+   5. BANNER PRINCIPAL
+=================================================================== */
 
 .banner {
     padding: 120px 0;
     text-align: center;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://www.amperj.org/wp-content/uploads/2022/07/IMG-SITE-44.jpg'); /* Placeholder */
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://www.amperj.org/wp-content/uploads/2022/07/IMG-SITE-44.jpg');
     background-size: cover;
     background-position: center;
     color: white;
@@ -137,57 +358,30 @@ p.subtitle {
     color: #f0f0f0;
 }
 
-/* ===== CORES DE FUNDO (UTILITÁRIOS) ===== */
+/* ===================================================================
+   6. MAIN
+=================================================================== */
 
-/* ddbg já está sendo usado no footer e final-cta */
-.dbg { /* Cinza claro */
-    background-color: #e9e8e8;
-}
-
-.ddbg { /* Cinza escuro */
-    background-color: #333;
-}
-
-.lbg { /* Branco, para cards internos */
-    background-color: #ffffff;
-}
-
-/* ===== ESTRUTURA FLEXBOX (COMPONENTES) ===== */
-
-.flexbox {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 30px;
-    flex-wrap: wrap;
-}
-
-.flexcard {
-    border-radius: 12px;
-    padding: 30px;
-    text-align: center;
-}
-
-/* ===== SEÇÕES ESPECÍFICAS DA PÁGINA ===== */
-
+/* --- Seção: O Problema --- */
 #o-problema .textbox {
     text-align: center;
     max-width: 800px;
     margin: auto;
 }
+
 #o-problema p {
     font-size: 1.1em;
 }
 
-/* Seção: Benefícios */
+/* --- Seção: Benefícios --- */
 #beneficios .flexbox {
     align-items: stretch;
 }
 
 #beneficios .flexcard {
     flex: 1;
-    min-width: 250px; /* Adiciona uma largura mínima para evitar que fiquem muito estreitos */
-    max-width: 31%; /* Reduzimos um pouco a largura máxima para garantir espaço para o gap */
+    min-width: 250px;
+    max-width: 31%;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     display: flex;
@@ -196,14 +390,14 @@ p.subtitle {
 }
 
 #beneficios .flexcard img {
-    width: 120px; 
+    width: 120px;
     height: 120px;
     margin: 0 auto 25px auto;
 }
 
 #beneficios .flexcard h3 {
-    /* Adicionamos uma margem negativa para 'puxar' o título para cima */
-    margin-top: -40px; 
+    /* Margem negativa para "puxar" o título para cima, sobrepondo a imagem */
+    margin-top: -40px;
 }
 
 #beneficios .flexcard:hover {
@@ -211,43 +405,78 @@ p.subtitle {
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
 }
 
-/* Seção: Como Funciona */
-#como-funciona .flexbox {
-    align-items: stretch; /* FAZ AS COLUNAS TEREM A MESMA ALTURA */
+/* --- Seção: Como Funciona e Comunidade (Estilos Similares) --- */
+#como-funciona .flexbox,
+#comunidade .flexbox {
+    align-items: stretch; /* Faz as colunas terem a mesma altura */
 }
 
-#como-funciona .flexcard {
-    flex: 1; /* Permite que o card da imagem se ajuste de forma mais flexível */
-    max-width: 50%; /* Define uma largura máxima para que ocupe metade do espaço */
+#como-funciona .flexcard,
+#comunidade .flexcard {
+    flex: 1;
+    max-width: 50%;
     text-align: left;
-    padding: 0 20px; /* Adiciona padding horizontal para afastar do centro */
+    padding: 0 20px;
 }
-#como-funciona .flexcard p {
+
+#como-funciona .flexcard p,
+#comunidade .flexcard p {
     margin-bottom: 15px;
     line-height: 1.8;
 }
+
 #como-funciona .flexcard strong {
     color: #4CAF50;
 }
+
+#comunidade .flexbox {
+    flex-direction: row-reverse; /* Inverte a ordem (imagem à esquerda) */
+}
+
+/* Garante que a imagem ocupe 100% da altura do card nessas seções */
+#como-funciona .img1,
+#comunidade .img1 {
+    height: 100%;
+    object-fit: cover; /* Cobre o espaço sem distorcer */
+}
+
 .how-it-works .steps p {
     border-left: 3px solid #4CAF50;
     padding-left: 15px;
     margin-left: 10px;
 }
 
-/* Seção: Comunidade */
-#comunidade .flexbox {
-    flex-direction: row-reverse; /* Inverte a ordem dos itens (imagem à esquerda) */
-    align-items: stretch; /* FAZ AS COLUNAS TEREM A MESMA ALTURA */
-}
-#comunidade .flexcard {
-    flex: 1; /* Permite que o card da imagem se ajuste de forma mais flexível */
-    max-width: 50%; /* Define uma largura máxima para que ocupe metade do espaço */
-    text-align: left;
-    padding: 0 20px; /* Adiciona padding horizontal para afastar do centro */
+/* --- Seção: Assinatura (Planos) --- */
+#assinatura .flexcard.lbg {
+    background-color: #f0f0f0;
 }
 
-/* Seção: Final Call to Action (CTA) */
+#assinatura .img2 {
+    height: 40px;
+    width: auto;
+    object-fit: contain;
+}
+
+#assinatura th, 
+#assinatura td {
+    text-align: center;
+}
+
+#assinatura ul {
+    list-style: none;
+    text-align: center;
+    font-size: 1.5rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+#assinatura .table-container {
+    max-width: 75%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* --- Seção: Final Call to Action --- */
 .final-cta {
     padding: 80px 0;
     color: white;
@@ -262,14 +491,17 @@ p.subtitle {
 .final-cta .flexcard {
     padding: 0;
 }
+
 .final-cta h2 {
     color: white;
 }
+
 .final-cta p {
     font-size: 1.2em;
     max-width: 700px;
     margin: 0 auto 30px auto;
 }
+
 .final-cta small {
     display: block;
     margin-top: 15px;
@@ -277,175 +509,49 @@ p.subtitle {
     font-size: 0.9em;
 }
 
-#assinatura .flexcard.lbg {
-    background-color: #f0f0f0;
-}
-
-#assinatura .img2 {
-    height: 40px;
-    width: auto;
-    object-fit: contain;
-}
-
-#assinatura th, td{
-    text-align: center;
-}
-
-#assinatura ul{
-    list-style: none;
-    text-align: center;
-    font-size:1.5rem;
-    margin-top:2rem;
-    margin-bottom:2rem;
-}
-
-#assinatura .table-container{
-    max-width:75%;
-    margin-left:auto;
-    margin-right:auto;
-}
-
-/* ===== ESTILOS PARA TABELA ===== */
-
-/* Contêiner da tabela, se precisar de rolagem horizontal em telas pequenas */
-.table-container {
-    width: 100%;
-    overflow-x: auto; /* Adiciona rolagem horizontal se a tabela for muito larga */
-    margin: 20px 0;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-}
-
-table {
-    width: 100%; /* Faz a tabela ocupar toda a largura do seu contêiner */
-    border-collapse: collapse; /* Remove o espaçamento duplo entre as bordas */
-    font-size: 1rem; /* Tamanho de fonte base */
-    color: #333;
-    background-color: #fff;
-}
-
-/* Cabeçalho da Tabela (th) */
-table th {
-    background-color: #4CAF50; /* Um verde alinhado com o tema do seu site */
-    color: white; /* Texto branco para contrastar com o fundo verde */
-    font-weight: bold;
-    text-align: left; /* Alinha o texto do cabeçalho à esquerda */
-    padding: 16px 12px;
-    border-bottom: 2px solid #45a049;
-}
-
-/* Células da Tabela (td) */
-table td {
-    padding: 12px;
-    border-bottom: 1px solid #e9e8e8; /* Linha sutil para separar as linhas */
-    line-height: 1.5;
-}
-
-/* Linhas da Tabela (tr) */
-
-/* Efeito "zebra" (linhas alternadas) para melhor legibilidade */
-table tr:nth-child(even) {
-    background-color: #f9f9f9;
-}
-
-/* Efeito hover (mudar a cor da linha ao passar o mouse) */
-table tr:hover {
-    background-color: #f1f1f1;
-    cursor: default; /* Pode mudar para 'pointer' se a linha for clicável */
-}
-
-/* Estilo para a última linha - remove a borda inferior */
-table tr:last-child td {
-    border-bottom: none;
-}
-
-/* ===== BOTÃO PRINCIPAL (.btn) ===== */
-
-.btn {
-    background-color: #4CAF50;
-    color: white;
-    padding: 15px 35px;
-    text-decoration: none;
-    border-radius: 8px;
-    font-weight: bold;
-    font-size: 1.1em;
-    display: inline-block;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-    border: none;
-    cursor: pointer;
-    box-shadow: 0 4px 10px rgba(0, 70, 0, 0.3);
-}
-
-.btn:hover {
-    background-color: #45a049;
-    transform: translateY(-2px); /* Efeito sutil ao passar o mouse */
-    box-shadow: 0 6px 15px rgba(0, 70, 0, 0.4);
-}
-
-/* ===== ELEMENTOS DE MÍDIA (IMAGENS) ===== */
-
-.img1 {
-    width: 100%; /* Ajustado para ocupar 100% do flexcard */
-    max-width: 500px; /* Limite máximo */
-    height: auto;
-    border-radius: 12px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    display: block; /* Para remover espaçamento indesejado abaixo da imagem */
-    margin: 0 auto; /* Centraliza a imagem no flexcard */
-}
-#como-funciona .img1,
-#comunidade .img1 {
-    height: 100%; /* FAZ A IMAGEM OCUPAR TODA A ALTURA DO CARD */
-    object-fit: cover; /* COBRE TODO O ESPAÇO SEM DISTORCER (CORTA O EXCESSO) */
-}
-
-.img1:hover {
-    transform: scale(1.02); /* Efeito de zoom mais sutil */
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-}
-
-/* ===== RODAPÉ (FOOTER) ===== */
+/* ===================================================================
+   7. FOOTER
+=================================================================== */
 
 .footer {
     background-color: #282828;
     color: #fff;
     padding: 60px 0;
     text-align: left;
-    margin-top: auto; /* Garante que o rodapé esteja no final */
+    margin-top: auto; 
 }
 
 .footer .flexbox {
     justify-content: space-around;
     align-items: flex-start;
-    gap: 20px; /* Ajuste o gap para o rodapé */
+    gap: 20px;
 }
 
 .footer-column {
-    min-width: 180px; /* Ajustado o min-width */
+    min-width: 180px;
     padding: 10px;
 }
 
 .footer-column h3 {
-    font-size: 1.6em; /* Tamanho ajustado */
+    font-size: 1.6em;
     margin-bottom: 25px;
     color: white;
-    text-align: left; /* Títulos do footer alinhados à esquerda */
+    text-align: left;
 }
 
 .footer-column h4 {
-    font-size: 1em; /* Tamanho ajustado */
+    font-size: 1em;
     color: #a0a0a0;
     margin-bottom: 18px;
     text-transform: uppercase;
-    text-align: left; /* Títulos do footer alinhados à esquerda */
+    text-align: left;
 }
 
 .footer-column p, .footer-column a {
-    font-size: 0.95em; /* Tamanho levemente ajustado */
+    font-size: 0.95em;
     color: #dcdcdc;
     text-decoration: none;
-    display: block; /* Para links ocuparem a linha toda */
+    display: block;
     margin-bottom: 8px;
 }
 
@@ -461,7 +567,7 @@ table tr:last-child td {
 }
 
 .footer-column ul li {
-    margin-bottom: 10px; /* Espaçamento ajustado */
+    margin-bottom: 10px;
 }
 
 .social-link {
@@ -471,37 +577,136 @@ table tr:last-child td {
 }
 
 .social-link img {
-    width: 20px; /* Ícones maiores */
+    width: 20px;
     height: 20px;
 }
 
-/* ===== AJUSTES DE RESPONSIVIDADE ===== */
+/* ===================================================================
+   8. PÁGINAS ESPECÍFICAS
+=================================================================== */
 
+/* --- Página: Inscreva-se --- */
+.signup-container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.signup-container h1 {
+    text-align: center;
+    color: #333;
+    margin: 0 0 20px 0;
+}
+
+.input-group {
+    margin-bottom: 15px;
+}
+
+.input-group label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+    color: #555;
+}
+
+.input-group input, 
+.input-group select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+.input-group input[type="checkbox"] {
+    width: auto;
+}
+
+.terms { 
+    font-size: 14px; 
+    color: #555; 
+}
+.terms a { 
+    color: #4CAF50; 
+    text-decoration: none; 
+}
+
+.error { 
+    color: red; 
+    font-size: 14px; 
+}
+
+.hint {
+    color: #555;
+    font-size: 0.95em;
+    margin-top: 6px;
+}
+
+.hint ol {
+    margin: 6px 0 0 18px;
+}
+
+.hidden { 
+    display: none; 
+}
+
+.small-link { 
+    text-align: center; 
+    margin-top: 10px; 
+}
+
+/* Sobrescrita do .btn para a página de inscrição */
+.signup-container .btn {
+    width: 100%;
+    padding: 15px 32px;
+    border-radius: 5px;
+    font-size: 18px;
+}
+
+/* --- Página: Rotas (Mapa) --- */
+.map-info {
+    text-align: center;
+    margin-bottom: 12px;
+}
+
+#map {
+    width: 100%;
+    height: 60vh;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+}
+
+.map-controls { 
+    display:flex; 
+    gap:12px; 
+    justify-content:center; 
+    align-items:center; 
+    margin-bottom:16px; 
+}
+
+
+/* ===================================================================
+   9. AJUSTES DE RESPONSIVIDADE
+=================================================================== */
+
+/* --- Telas Médias (Tablets) --- */
 @media (max-width: 992px) {
     h1 { font-size: 3em; }
     h2 { font-size: 2em; }
-    #beneficios .flexcard {
-        max-width: 48%; /* Duas colunas em telas médias */
-    }
-    #como-funciona .flexcard,
-    #comunidade .flexcard,
-    .testimonial-card {
-        max-width: 100%;
-    }
-    #como-funciona .flexbox,
-    #comunidade .flexbox {
-        flex-direction: column; /* Coluna em telas menores */
-    }
-    #como-funciona .flexcard:first-child,
-    #comunidade .flexcard:first-child {
-        padding-right: 0;
-        padding-left: 0;
-    }
-    .img1 {
-        max-width: 80%; /* Ajuste o tamanho da imagem em telas menores */
-    }
+
+    /* --- Header Responsivo --- */
     .header .container {
         flex-direction: column;
+        gap: 15px;
+        padding: 15px 20px;
+    }
+    .header-right-group {
+        flex-direction: column;
+        width: 100%;
         gap: 15px;
     }
     .nav {
@@ -510,10 +715,31 @@ table tr:last-child td {
         justify-content: center;
         gap: 10px;
     }
-    .header a {
-        border-left: none;
-        padding-left: 0;
+    .nav a {
+        margin: 0 10px;
     }
+    
+    /* --- Seções de Conteúdo --- */
+    #beneficios .flexcard {
+        max-width: 48%; /* Duas colunas */
+    }
+
+    #como-funciona .flexbox,
+    #comunidade .flexbox {
+        flex-direction: column; /* Empilha as colunas */
+    }
+    
+    #como-funciona .flexcard,
+    #comunidade .flexcard {
+        max-width: 100%;
+        padding: 0;
+    }
+    
+    .img1 {
+        max-width: 80%;
+    }
+
+    /* --- Rodapé Responsivo --- */
     .footer .flexbox {
         flex-direction: column;
         align-items: center;
@@ -534,100 +760,38 @@ table tr:last-child td {
     }
 }
 
+/* --- Telas Pequenas (Smartphones Maiores) --- */
 @media (max-width: 768px) {
     h1 { font-size: 2.5em; }
     h2 { font-size: 1.8em; }
+    .container { padding: 40px 15px; }
+
     .banner { padding: 80px 0; }
     .banner p { font-size: 1.1em; }
-    .container { padding: 40px 15px; }
+
     #beneficios .flexcard {
-        max-width: 100%; /* Uma coluna em telas pequenas */
+        max-width: 100%; /* Uma coluna */
     }
     .final-cta p {
         font-size: 1em;
     }
+
+    #map { 
+        height: 50vh; 
+    }
 }
 
+/* --- Telas Muito Pequenas (Smartphones Menores) --- */
 @media (max-width: 480px) {
     h1 { font-size: 2em; }
     h2 { font-size: 1.5em; }
+    
     .btn {
         padding: 12px 25px;
         font-size: 1em;
     }
+    
     .nav a {
         margin: 0 8px;
     }
 }
-
-/* ===== Estilos específicos da página inscreva-se ===== */
-.signup-container {
-    max-width: 600px;
-    margin: 50px auto;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-.signup-container h1 {
-    text-align: center;
-    color: #333;
-    margin: 0 0 20px 0;
-}
-.input-group {
-    margin-bottom: 15px;
-}
-.input-group label {
-    font-weight: bold;
-    display: block;
-    margin-bottom: 5px;
-    color: #555;
-}
-.input-group input, .input-group select {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-sizing: border-box;
-    font-size: 16px;
-}
-.input-group input[type="checkbox"] {
-    width: auto;
-}
-.terms { font-size: 14px; color: #555; }
-.terms a { color: #4CAF50; text-decoration: none; }
-.error { color: red; font-size: 14px; }
-.hint {
-    color: #555;
-    font-size: 0.95em;
-    margin-top: 6px;
-}
-.hint ol {
-    margin: 6px 0 0 18px;
-}
-.hidden { display: none; }
-.small-link { text-align: center; margin-top: 10px; }
-/* Restaurar aparência do botão na página de inscrição (override específico) */
-.signup-container .btn {
-    width: 100%;
-    padding: 15px 32px;
-    border-radius: 5px;
-    font-size: 18px;
-}
-
-/* ===== Estilos específicos da página rotas (mapa) ===== */
-.map-info {
-    text-align: center;
-    margin-bottom: 12px;
-}
-#map {
-    width: 100%;
-    height: 60vh;
-    border-radius: 10px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.12);
-}
-@media (max-width: 768px) {
-    #map { height: 50vh; }
-}
-/* Use existing .btn styles for consistency */
-.map-controls { display:flex; gap:12px; justify-content:center; align-items:center; margin-bottom:16px; }
