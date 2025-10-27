@@ -369,6 +369,64 @@ table tr:last-child td {
     margin: auto;
 }
 
+/* --- Layout específico para seções com imagem ao lado (classe .split) --- */
+.split .textbox {
+    text-align: left; /* Alinha títulos e parágrafos à esquerda */
+    flex: 1 1 60%; /* ocupa cerca de 60% do espaço disponível */
+    min-width: 220px;
+}
+.split ul {
+    text-align: left;
+    margin-left: 1.25rem; /* recua a lista para ficar consistente */
+}
+.split .img1 {
+    margin-left: 24px; /* espaço entre texto e imagem */
+    /* padrão: não cortar; apenas reduzir para caber ao lado do texto */
+    flex: 0 0 360px; /* reserva espaço fixo menor para a imagem */
+    width: 360px;
+    height: auto;
+    max-width: 360px;
+    display: block;
+    align-self: center;
+}
+
+/* imagem com crop aplicado (apenas quando necessário) */
+.split .img1.img-crop {
+    /* reduzida para 260x150 para a imagem marcada (11.jpeg) */
+    flex: 0 0 260px;
+    width: 260px;
+    height: 150px; /* fixa altura para que object-fit corte o excesso */
+    max-width: none;
+    object-fit: cover; /* corta/encaixa a imagem no box sem distorcer */
+}
+
+/* Ajustes para o layout da linha: força alinhamento e evita que a imagem quebre em telas largas */
+.split .flexbox {
+    align-items: center;
+    flex-direction: row; /* garante direção em linha */
+    justify-content: space-between; /* força texto à esquerda e imagem à direita */
+}
+
+/* garantir ordem: texto à esquerda, imagem à direita em .split */
+.split .textbox { order: 1; }
+.split .img1 { order: 2; }
+
+@media (min-width: 900px) {
+    .split .flexbox {
+        flex-wrap: nowrap; /* força duas colunas em telas largas */
+    }
+    .split .img1 {
+        margin-left: 24px; /* garante espaço à esquerda da imagem */
+    }
+}
+
+/* Corrigir conflito específico com regras de #comunidade que invertem a ordem (row-reverse).
+   Quando a section tem tanto id quanto classe split, força row normal. */
+section#comunidade.split .flexbox {
+    flex-direction: row; /* garante imagem à direita para esta combinação específica */
+    justify-content: space-between;
+}
+
 #o-problema p {
     font-size: 1.1em;
 }
