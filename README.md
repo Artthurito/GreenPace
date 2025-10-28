@@ -63,5 +63,5 @@ Este projeto foi realizado por:
 * **Danilo Moura Bruzarosco** ([@danbruza](https://github.com/danbruza))
 * **Enzo Queiroz Wassano** ([@Toc-o](https://github.com/Toc-o))
 * **Miguel Silva Campos** ([@bigbig018](https://github.com/bigbig018))
-* **Pedro Domingos da Costa Silva** ([@Ramon17945](https://github.com/Ramon17945))
-* **Ramon Aguilera Scudeler**
+* **Pedro Domingos da Costa Silva**
+* **Ramon Aguilera Scudeler** ([@Ramon17945](https://github.com/Ramon17945))
