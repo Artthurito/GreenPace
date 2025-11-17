@@ -854,3 +854,67 @@ section#comunidade.split .flexbox {
     }
 }
 
+/* ===================================================================
+   Rotas page styles (moved from inline <style> in rotas.html)
+   Scoped by the presence of the data-ors-key attribute on <body>
+   This avoids adding a class while keeping styles specific to the page.
+=================================================================== */
+body[data-ors-key] {
+    --header-offset: 100px;
+    --footer-offset: 80px;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    background: #2c2c2e;
+    font-family: Arial, sans-serif;
+    color: #f1f1f1;
+}
+
+body[data-ors-key] #sidebar {
+    position: absolute;
+    top: calc(var(--header-offset) + 12px);
+    left: 10px;
+    background: #2c2c2e;
+    padding: 20px;
+    border-radius: 8px;
+    z-index: 1000;
+    width: 370px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+}
+
+body[data-ors-key] #sidebar h1 { margin: 0 0 10px 0; font-size: 20px; color: #ffffff; text-align: left; font-weight: 700; }
+body[data-ors-key] p { font-size: 13px; margin-bottom: 8px; }
+
+body[data-ors-key] button {
+    width: 100%;
+    padding: 10px;
+    margin: 6px 0;
+    border-radius: 8px;
+    border: none;
+    font-size: 14px;
+    cursor: pointer;
+    font-weight: 700;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.35);
+}
+
+body[data-ors-key] #get-route { background: linear-gradient(#2f8ef7,#0071e6); color: #fff; }
+body[data-ors-key] #clear-all { background: linear-gradient(#ff6b6b,#e53935); color: #fff; }
+
+body[data-ors-key] main.main-content { position: relative; padding-top: var(--header-offset); padding-bottom: var(--footer-offset); }
+body[data-ors-key] #map {
+    position: relative;
+    width: 100%;
+    height: calc(100vh - var(--header-offset) - var(--footer-offset));
+    z-index: 0;
+    border-radius: 0 !important;
+}
+
+/* Ensure Leaflet container has no rounded corners on this page */
+body[data-ors-key] .leaflet-container { border-radius: 0 !important; }
+
+@media (max-width: 480px) {
+    body[data-ors-key] #sidebar { width: calc(100% - 36px); left: 18px; right: 18px; }
+    body[data-ors-key] main.main-content { padding-top: 120px; }
+    body[data-ors-key] #map { height: calc(100vh - 200px); }
+}
+
