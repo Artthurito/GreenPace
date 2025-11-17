@@ -76,10 +76,158 @@
     });
 })();
 
+// Rotas page: OpenRouteService-based routing and map helpers
+(function(){
+        // Only run on the rotas page when the route controls exist
+        if(!document.getElementById('get-route')) return;
+
+        // ORS key: prefer a per-page value if present (window.ORS_API_KEY or data-ors-key on body),
+        // otherwise fall back to the placeholder so code doesn't accidentally send requests.
+        const ORS_API_KEY = (function(){
+            try{
+                if(window.ORS_API_KEY) return window.ORS_API_KEY;
+                if(document.body && document.body.dataset && document.body.dataset.orsKey) return document.body.dataset.orsKey;
+            }catch(e){}
+            return "SUA_CHAVE_AQUI";
+        })();
+
+        function fitMapToViewport(){
+                const header = document.querySelector('.header');
+                const footer = document.querySelector('.footer');
+                const mapEl = document.getElementById('map');
+                const headerH = header ? header.getBoundingClientRect().height : 0;
+                const footerH = footer ? footer.getBoundingClientRect().height : 0;
+                const targetH = Math.max(200, window.innerHeight - headerH - footerH);
+                if(mapEl) mapEl.style.height = targetH + 'px';
+        }
+
+        window.addEventListener('resize', function(){ fitMapToViewport(); if(window._gp_map) window._gp_map.invalidateSize(); });
+        document.addEventListener('DOMContentLoaded', fitMapToViewport);
+        // run immediately in case this script is loaded after DOMContent
+        fitMapToViewport();
+
+        // initialize map (with zoom controls disabled to match site style)
+        const map = L.map('map', { zoomControl: false }).setView([-23.5015, -47.4526], 13);
+        window._gp_map = map;
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '© OpenStreetMap'
+        }).addTo(map);
+
+        // invalidate size after a short delay to ensure tiles render
+        setTimeout(function(){ try{ map.invalidateSize(); }catch(e){} }, 100);
+
+        let markers = [];
+        let routeLine = null;
+
+        // avoid area (example: Sorocaba)
+        const avoidCenter = [-23.5015, -47.4526];
+        const avoidRadius = 700; // meters
+        const avoidCircle = L.circle(avoidCenter, {
+            color: 'red',
+            fillColor: 'red',
+            fillOpacity: 0.25,
+            radius: avoidRadius
+        }).addTo(map).bindPopup('Área de evitação');
+
+        function circleToPolygon(center, radius, points = 60) {
+            const coords = [];
+            const earthRadius = 6378137; // m
+            const lat = center[0] * Math.PI / 180;
+            for (let i = 0; i < points; i++) {
+                const angle = (i / points) * (2 * Math.PI);
+                const dx = radius * Math.cos(angle);
+                const dy = radius * Math.sin(angle);
+                const latOffset = (dy / earthRadius) * (180 / Math.PI);
+                const lonOffset = (dx / (earthRadius * Math.cos(lat))) * (180 / Math.PI);
+                coords.push([center[1] + lonOffset, center[0] + latOffset]);
+            }
+            coords.push(coords[0]);
+            return [coords];
+        }
+
+        // map clicks -> add marker if outside avoid area
+        map.on('click', (e) => {
+            const distance = map.distance(e.latlng, avoidCircle.getLatLng());
+            if (distance < avoidRadius) {
+                alert("❌ Não é permitido selecionar dentro da área vermelha!");
+                return;
+            }
+            if (markers.length >= 2) {
+                alert("⚠️ Máximo de 2 pontos. Limpe para adicionar novos.");
+                return;
+            }
+            const marker = L.marker(e.latlng).addTo(map);
+            markers.push(marker);
+        });
+
+        // clear-all button
+        const clearBtn = document.getElementById('clear-all');
+        if(clearBtn) clearBtn.onclick = () => {
+            markers.forEach(m => map.removeLayer(m));
+            markers = [];
+            if (routeLine) map.removeLayer(routeLine);
+        };
+
+        // get-route -> call ORS and draw route avoiding polygon
+        const getRouteBtn = document.getElementById('get-route');
+        if(getRouteBtn) getRouteBtn.onclick = async () => {
+            if (!ORS_API_KEY || ORS_API_KEY === "SUA_CHAVE_AQUI")
+                return alert('⚠️ Insira sua chave ORS diretamente no código antes de continuar.');
+
+            if (markers.length < 2)
+                return alert('Selecione dois pontos no mapa.');
+
+            const coords = markers.map(m => [m.getLatLng().lng, m.getLatLng().lat]);
+            const avoidPolygon = circleToPolygon(avoidCenter, avoidRadius);
+
+            const body = {
+                coordinates: coords,
+                format: "geojson",
+                options: {
+                    avoid_polygons: {
+                        type: "Polygon",
+                        coordinates: avoidPolygon
+                    }
+                }
+            };
+
+            try {
+                const res = await fetch(`https://api.openrouteservice.org/v2/directions/foot-walking/geojson`, {
+                    method: "POST",
+                    headers: {
+                        "Authorization": ORS_API_KEY,
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(body)
+                });
+
+                const data = await res.json();
+
+                if (!res.ok || !data.features) {
+                    console.error(data);
+                    return alert("Erro ao calcular rota. Verifique sua chave ou tente outro ponto.");
+                }
+
+                const routeCoords = data.features[0].geometry.coordinates.map(c => [c[1], c[0]]);
+                if (routeLine) map.removeLayer(routeLine);
+                routeLine = L.polyline(routeCoords, { color: 'blue', weight: 4 }).addTo(map);
+                map.fitBounds(routeLine.getBounds());
+
+            } catch (err) {
+                console.error(err);
+                alert("Erro de conexão com o OpenRouteService.");
+            }
+        };
+
+})();
 // Map initialization for rotas.html — centralized from inline script
 (function(){
     // only run on pages that include the map element
     if(!document.getElementById('map')) return;
+    // If a page has the route controls (#get-route) we prefer the ORS/block above to initialize
+    // the map and routing. This prevents double initialization on rotas.html.
+    if(document.getElementById('get-route')) return;
     try {
         var map = L.map('map').setView([-23.5505, -46.6333], 14);
 
