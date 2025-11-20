@@ -338,7 +338,7 @@ table tr:last-child td {
 .banner {
     padding: 120px 0;
     text-align: center;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://s1.1zoom.me/b5050/453/Fitness_Roads_Run_502738_3840x2400.jpg');
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('Imagens/banner_site.jpg');
     background-size: cover;
     background-position: center;
     color: white;
@@ -917,6 +917,7 @@ body[data-ors-key] .leaflet-container { border-radius: 0 !important; }
     body[data-ors-key] main.main-content { padding-top: 120px; }
     body[data-ors-key] #map { height: calc(100vh - 200px); }
 }
+
 
 
 
