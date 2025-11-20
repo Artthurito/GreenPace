@@ -338,7 +338,7 @@ table tr:last-child td {
 .banner {
     padding: 120px 0;
     text-align: center;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://www.amperj.org/wp-content/uploads/2022/07/IMG-SITE-44.jpg');
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://www.arbutusphysiotherapy.ca/wp-content/uploads/2018/06/taelor-lay-running-a-marathon.jpg');
     background-size: cover;
     background-position: center;
     color: white;
@@ -917,4 +917,5 @@ body[data-ors-key] .leaflet-container { border-radius: 0 !important; }
     body[data-ors-key] main.main-content { padding-top: 120px; }
     body[data-ors-key] #map { height: calc(100vh - 200px); }
 }
+
 
